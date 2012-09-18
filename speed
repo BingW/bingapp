@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+#coding: utf-8
+import sys
+import random
+import time
+argu = open("/Users/bingwang/zen/GRE/Argu_all.txt")
+issue = open("/Users/bingwang/zen/GRE/Issue_all.txt")
+def speedTyping(f,num):
+    total_time = 0
+    total_input = ""
+    flag = 0
+    for line in f:
+        if line.startswith("Issue "+str(num)+"\n") or \
+            line.startswith("Argument "+str(num)+"\n"):
+            print line
+            flag = 1
+        elif line.startswith("Issue ") or line.startswith("Argument "):
+            flag = 0
+        elif flag == 1:
+            if line.strip():
+                seqs = line.split(".")
+                for seq in seqs:
+                    print seq
+                    time_start = time.time()
+                    a = raw_input()
+                    total_time += int(time.time())-int(time_start)
+                    total_input += a + " "
+
+    inputs = total_input.split(" ")
+    word_count = len(inputs) - inputs.count("")
+
+    print "word count: ", word_count
+    print "speed: %.2f word/min" % (word_count * 60.0 / total_time)
+
+try:
+    sys.argv[1]
+    if sys.argv[1] == '-a':  
+        speedTyping(argu,random.randint(1,125))
+    elif sys.argv[1] == '-i':
+        speedTyping(issue,random.randint(1,124))
+    else:
+        print 'use \'-i\' for issue or \'-a\' for argument:'  
+        sys.exit() 
+except:
+    print 'use \'-i\' for issue or \'-a\' for argument:'  
+    sys.exit()
