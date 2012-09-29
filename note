@@ -1,0 +1,93 @@
+#!/usr/bin/env python
+# coding:utf-8
+# Author: bingwang
+# Email: toaya.kase@gmail.com
+# Copylight 2012-2012 Bing Wang
+# LICENCES: GPL v3.0
+
+__docformat__ = "epytext en"
+
+import os
+import sys
+import datetime
+now = datetime.datetime.now()
+homepage = "/Users/bingwang/zen/homepage"
+archive = "/Users/bingwang/zen/notes/archive"
+notes = "/Users/bingwang/zen/notes"
+'''
+usage:
+$ cd ~/zen/homepage
+$ note new_post ["Hello World"]
+    # create 2012-09-28-hello-world.mkrkdown in source/_post
+    # ln this file to notes/archive/hello-world.mkd
+$ note preview
+    # == rake generate + rake preview
+$ note deploy
+    # == rake deploy
+$ note renew
+    # ln all files in source/_post to notes/archive
+    # ln to folders according to their categories
+'''
+
+def check_dir():
+    if os.getcwd() != homepage:
+        sys.exit("\033[91m please cd to homepage \033[0m")
+
+def phase_argv():
+    try:
+        sys.argv[1]
+    except:
+        sys.exit("\033[91m no argument \033[0m")
+    if sys.argv[1].startswith("new_post"):
+        name = "-".join(sys.argv[1][sys.argv[1].find("[")+1:\
+                sys.argv[1].rfind("]")].split(" ")).lower()
+        new_post(name)
+    elif sys.argv[1] == "preview":
+        os.system("rake generate")
+        os.system("rake preview")
+    elif sys.argv[1] == "deploy":
+        os.system("rake deploy")
+    elif sys.argv[1] == "renew":
+        renew()
+
+def renew():
+    handle = os.popen("grep categories "+homepage+"/source/_posts/*.markdown")
+    for line in handle:
+        line = line.strip().split(":")
+        if line[1] == "categories":
+            categories = line[2].split(" ")
+        file_name = line[0][line[0].rfind("/")+1:][11:-9]
+        os.system("ln -f "+line[0]+" "+archive+"/"+file_name+".mkd")
+        for category in categories:
+            if category:
+                os.system("mkdir -p "+notes+"/"+category)
+                os.system("ln -f "+line[0]+" "+notes+"/"+category+"/"+\
+                        file_name+".mkd")
+
+def new_post(file_name):
+    if file_name+".mkd" in os.listdir(archive):
+        if raw_input("\033[91m Warning: "+file_name+\
+                " existed!still open?(y/n)\033[0m").lower() == "y":
+            os.system("mvim "+archive+"/"+file_name+".mkd")
+    else:
+        #os.system("rake new_post[\""+file_name+"\"]")
+        date = now.strftime("%Y-%m-%d")
+        date_name = date+"-"+file_name+".markdown"
+        if date_name in os.listdir(homepage+"/source/_posts"):
+            if raw_input("\033[91m Warning: "+file_name+\
+                " existed!still open?(y/n)\033[0m").lower() == "y":
+                os.system("ln "+homepage+"/source/_posts/"+date_name+" "+archive+"/"+file_name+".mkd")
+                os.system("mvim "+homepage+"/source/_posts/"+date_name)
+        else:
+            f = open(homepage+"/source/_posts/"+date_name,"w")
+            f.write("---\nlayout: post\ntitle: \""+file_name+"\"\ndate: "+\
+                    now.strftime("%Y-%m-%d %H:%M")+"\ncomments: true\n"+\
+                    "published: false\ncategories: \n"+"---\n")
+            f.close()
+            os.system("ln "+homepage+"/source/_posts/"+date_name+" "+archive+"/"+file_name+".mkd")
+            print "\033[92m"+homepage+"/source/_posts/"+date_name+" successfully created!\033[0m"
+            os.system("mvim "+homepage+"/source/_posts/"+date_name)
+
+if __name__ == "__main__":
+    check_dir()
+    phase_argv()
