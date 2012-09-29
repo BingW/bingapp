@@ -39,6 +39,7 @@ def gffIterator(handle):
     """
     while 1:
         line = handle.readline()
+        if line.startswith("#"): continue
         if not line: return
         if line.count("\t") != 8:
             raise ValueError("record in GFF3 file should have nine columns")
@@ -59,4 +60,3 @@ def _test():
 
 if __name__ == "__main__":
     _test()
-# coding:utf-8

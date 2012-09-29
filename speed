@@ -3,8 +3,8 @@
 import sys
 import random
 import time
-argu = open("/Users/bingwang/zen/GRE/Argu_all.txt")
-issue = open("/Users/bingwang/zen/GRE/Issue_all.txt")
+argu = open("/Users/bingwang/zen/bing/test/Argu_all.txt")
+issue = open("/Users/bingwang/zen/bing/test/Issue_all.txt")
 def speedTyping(f,num):
     total_time = 0
     total_input = ""
@@ -20,7 +20,7 @@ def speedTyping(f,num):
             if line.strip():
                 seqs = line.split(".")
                 for seq in seqs:
-                    print seq
+                    print '\033[93m'+seq+'\033[0m' #yellow color in terminal
                     time_start = time.time()
                     a = raw_input()
                     total_time += int(time.time())-int(time_start)
