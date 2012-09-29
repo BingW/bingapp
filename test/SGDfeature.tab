@@ -1,0 +1,26 @@
+S000028864	telomeric_repeat		TEL01L-TR			chromosome 1		1	62	1	C		2003-09-09	2003-09-09	Terminal stretch of telomeric repeats on the left arm of Chromosome I
+S000002143	ORF	Dubious	YAL069W			chromosome 1		1	335	649	W		1996-07-31	1996-07-31	Dubious open reading frame unlikely to encode a protein, based on available experimental and comparative sequence data
+S000031098	CDS					YAL069W		1	335	649	W		1996-07-31	1996-07-31	
+S000028866	X_element_combinatorial_repeats		TEL01L-XR			chromosome 1		1	336	63	C		2003-09-09	2003-09-09	Telomeric X element combinatorial Repeat region on the left arm of Chromosome I; contains repeats of the D, C, B and A types, as well as Tbf1p binding sites; formerly called SubTelomeric Repeats
+S000028594	ORF	Dubious	YAL068W-A			chromosome 1		1	538	792	W		2003-07-29	2003-07-29	Dubious open reading frame unlikely to encode a protein; identified by gene-trapping, microarray-based expression analysis, and genome-wide homology searching
+S000031372	CDS					YAL068W-A		1	538	792	W		2003-07-29	2003-07-29	
+S000121252	ARS		ARS102		ARSI-1	chromosome 1		1	650	1791			2007-03-07	2007-03-07	Autonomously Replicating Sequence
+S000028862	telomere		TEL01L			chromosome 1		1	801	1	C	-64	2003-09-09	2003-09-09	Telomeric region on the left arm of Chromosome I; composed of an X element core sequence, X element combinatorial repeats, and a short terminal stretch of telomeric repeats
+S000028865	X_element_core_sequence		TEL01L-XC			chromosome 1		1	801	337	C		2003-09-09	2003-09-09	Telomeric X element Core sequence on the left arm of Chromosome I; contains an ARS consensus sequence, an Abf1p binding site consensus sequence and two small overlapping ORFs (YAL068W-A and YAL069W)
+S000034593	ARS consensus sequence					TEL01L-XC		1	763	753	C		2003-09-09	2003-09-09	
+S000034594	binding_site					TEL01L-XC		1	544	532	C		2003-09-09	2003-09-09	
+S000002142	ORF	Verified	YAL068C	PAU8		chromosome 1		1	2169	1807	C		1996-07-31	1996-07-31	Protein of unknown function, member of the seripauperin multigene family encoded mainly in subtelomeric regions
+S000030944	CDS					YAL068C		1	2169	1807	C		1996-07-31	1996-07-31	
+S000028593	ORF	Uncharacterized	YAL067W-A			chromosome 1		1	2480	2707	W		2003-07-29	2003-07-29	Putative protein of unknown function; identified by gene-trapping, microarray-based expression analysis, and genome-wide homology searching
+S000031368	CDS					YAL067W-A		1	2480	2707	W		2003-07-29	2003-07-29	
+S000121253	ARS		ARS103		ARSI-8	chromosome 1		1	7997	8547			2011-02-03	2007-03-07	Autonomously Replicating Sequence
+S000000062	ORF	Verified	YAL067C	SEO1		chromosome 1	L000003363	1	9016	7235	C		2011-02-03	1996-07-31	Putative permease, member of the allantoate transporter subfamily of the major facilitator superfamily; mutation confers resistance to ethionine sulfoxide
+S000029932	CDS					YAL067C		1	9016	7235	C		2011-02-03	1996-07-31	
+S000000061	ORF	Dubious	YAL066W			chromosome 1		1	10091	10399	W		2011-02-03	1996-07-31	Dubious open reading frame unlikely to encode a protein, based on available experimental and comparative sequence data
+S000029887	CDS					YAL066W		1	10091	10399	W		2011-02-03	1996-07-31	
+S000001817	ORF	Uncharacterized	YAL065C			chromosome 1		1	11951	11565	C		2011-02-03	1996-07-31	Putative protein of unknown function; has homology to FLO1; possible pseudogene
+S000037154	CDS					YAL065C		1	11951	11565	C		2011-02-03	1996-07-31	
+S000002141	ORF	Uncharacterized	YAL064W-B			chromosome 1		1	12046	12426	W		2011-02-03	1999-07-17	Fungal-specific protein of unknown function
+S000034793	CDS					YAL064W-B		1	12046	12426	W		2011-02-03	1999-07-17	
+S000002140	ORF	Uncharacterized	YAL064C-A	TDA8	YAL065C-A	chromosome 1		1	13743	13363	C		2011-02-03	1996-07-31	Putative protein of unknown function; null mutant is sensitive to expression of the top1-T722A allele; not an essential gene
+S000031541	CDS					YAL064C-A		1	13743	13363	C		2011-02-03	1996-07-31	
