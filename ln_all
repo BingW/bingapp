@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+# coding:utf-8
+# Author: bingwang
+# Email: toaya.kase@gmail.com
+# Copylight 2012-2012 Bing Wang
+# LICENCES: GPL v3.0
+
+__docformat__ = "epytext en"
+
+import os
+import sys
+
+ignore = ['.DS_Store']
+def main():
+    if len(sys.argv) != 3:
+        sys.exit("\033[91m ln_all take exactly 2 arguments\033[0m")
+
+    path_from = sys.argv[1]
+    path_to = sys.argv[2]
+
+    if not path_from.startswith("/"):
+        path_from = "%s/%s" % (os.getcwd(),path_from)
+    if path_from.endswith("/"):
+        path_from = path_from[:-1]
+
+    if not path_to.startswith("/"):
+        path_to = "%s/%s" % (os.getcwd(),path_to)
+    if path_to.endswith("/"):
+        path_to = path_to[:-1]
+
+    os.system("mkdir -p %s" % path_to)
+    for (now_path, dirs, files) in os.walk(path_from):
+        target_path = path_to + now_path[now_path.find(path_from)+len(path_from):]
+        for d in dirs:
+            os.system("mkdir %s/%s" % (target_path,d))
+        for f in files:
+            if f not in ignore:
+                os.system("ln %s/%s %s/%s" % (now_path,f,target_path,f))
+
+if __name__ == "__main__":
+    main()

@@ -47,7 +47,10 @@ def gffIterator(handle):
         r.seqid,r.source,r.type,r.start,r.end,\
         r.score,r.strand,r.phase,column9 = line.split("\t")
         for a in column9.split(";"):
-            r.attributes[a.split("=")[0]] = a.split("=")[1].split(",")
+            try:
+                r.attributes[a.split("=")[0]] = a.split("=")[1].split(",")
+            except:
+                pass
         yield r
 
 #TODO write gff_file
